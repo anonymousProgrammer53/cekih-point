@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cekih Point</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="formInputPlayerModal" tabindex="-1" aria-labelledby="inputPlayerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form id="playerForm" class="needs-validation" novalidate>
+                            <label for="inputPlayerName1" class="form-label fw-semibold mt-2">
+                                Player name <span class="text-danger">*</span>
+                            </label>
+                            <input id="inputPlayerName1" class="form-control" type="text" placeholder="Player name"
+                                aria-label="Player name" required>
+                            <label for="inputPlayerName2" class="form-label fw-semibold mt-3">
+                                Player name <span class="text-danger">*</span>
+                            </label>
+                            <input id="inputPlayerName2" class="form-control" type="text" placeholder="Player name"
+                                aria-label="Player name" required>
+
+                            <label for="inputPlayerName3" class="form-label fw-semibold mt-3">
+                                Player name <span class="text-danger">*</span>
+                            </label>
+                            <input id="inputPlayerName3" class="form-control" type="text" placeholder="Player name"
+                                aria-label="Player name" required>
+
+                            <label for="inputPlayerName4" class="form-label fw-semibold mt-3">
+                                Player name <span class="text-danger">*</span>
+                            </label>
+                            <input id="inputPlayerName4" class="form-control" type="text" placeholder="Player name"
+                                aria-label="Player name" required>
+
+                            <button type="submit" class="btn btn-primary fw-semibold mt-3 mb-2 pt-2 pb-2 ps-3 pe-3">Play
+                                Now!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card -->
+        <div class="row mt-3 mb-3">
+            <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
+                <p class="text-center">-- di bikin dengan penuh cinta dan kasih sayang by <span
+                        class="fw-semibold text-danger">AA SASUKE</span> --</p>
+                <div class="card btn btn-outline-primary mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <span></span>
+                        <span class="fs-5 fw-bold">1</span>
+                    </div>
+                </div>
+                <div class="card btn btn-outline-primary mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <span></span>
+                        <span class="fs-5 fw-bold">2</span>
+                    </div>
+                </div>
+                <div class="card btn btn-outline-primary mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <span></span>
+                        <span class="fs-5 fw-bold">3</span>
+                    </div>
+                </div>
+                <div class="card btn btn-outline-primary mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <span></span>
+                        <span class="fs-5 fw-bold">4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Input -->
+        <div class="row mt-3 mb-3">
+            <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="d-flex align-items-center gap-3">
+                                <input class="form-control pt-4 pb-4 text-center w-100" type="text"
+                                    placeholder="insert number" aria-label="default input example">
+                                <button id="minusPoint" class="btn btn-danger fw-bold fs-3 pt-3 pb-3 w-50">-</button>
+                                <button id="plusPoint" class="btn btn-primary fw-bold fs-3 pt-3 pb-3 w-50">+</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button New Game -->
+        <div class="row mt-3 mb-3">
+            <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
+                <button id="newGameBtn" class="btn btn-primary d-block w-100 fs-5 pt-3 pb-3 fw-semibold">New
+                    Game</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let formInputPlayerNameModal = new bootstrap.Modal(document.getElementById('formInputPlayerModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+
+            let form = document.getElementById("playerForm");
+
+            // Fungsi untuk memperbarui kartu dengan nama pemain
+            function updatePlayerCards(players) {
+                document.querySelectorAll(".card:nth-child(2) .card-body span:first-child")[0].textContent = players[0] || "Player 1";
+                document.querySelectorAll(".card:nth-child(3) .card-body span:first-child")[0].textContent = players[1] || "Player 2";
+                document.querySelectorAll(".card:nth-child(4) .card-body span:first-child")[0].textContent = players[2] || "Player 3";
+                document.querySelectorAll(".card:nth-child(5) .card-body span:first-child")[0].textContent = players[3] || "Player 4";
+            }
+
+            // Cek apakah ada data di localStorage
+            let savedPlayers = JSON.parse(localStorage.getItem("players")) || [];
+            if (savedPlayers.length === 4) {
+                updatePlayerCards(savedPlayers); // Jika ada, tampilkan data dari localStorage
+            } else {
+                formInputPlayerNameModal.show(); // Jika tidak, munculkan modal
+            }
+
+            // Event submit form
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                if (!form.checkValidity()) {
+                    event.stopPropagation();
+                    form.classList.add("was-validated");
+                    return;
+                }
+
+                // Ambil nilai input dari form
+                let players = [
+                    document.getElementById("inputPlayerName1").value,
+                    document.getElementById("inputPlayerName2").value,
+                    document.getElementById("inputPlayerName3").value,
+                    document.getElementById("inputPlayerName4").value
+                ];
+
+                // Simpan ke localStorage
+                localStorage.setItem("players", JSON.stringify(players));
+
+                // Perbarui kartu dengan nama pemain
+                updatePlayerCards(players);
+
+                // Tutup modal setelah submit
+                formInputPlayerNameModal.hide();
+            }, false);
+
+            // New Game
+            document.getElementById("newGameBtn").addEventListener("click", function () {
+                localStorage.removeItem("players"); // Hapus data dari localStorage
+                location.reload(); // Refresh halaman untuk reset tampilan
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let selectedPlayerIndex = null; // Menyimpan indeks pemain yang dipilih
+            let playerPoints = JSON.parse(localStorage.getItem("playerPoints")) || [0, 0, 0, 0]; // Simpan poin pemain
+
+            // Fungsi memperbarui tampilan poin pemain di kartu
+            function updatePlayerPoints() {
+                document.querySelectorAll(".card.btn .card-body span:last-child").forEach((el, index) => {
+                    el.textContent = playerPoints[index]; // Update tampilan poin
+                });
+            }
+
+            // Event listener untuk memilih pemain ketika kartunya diklik
+            document.querySelectorAll(".card.btn").forEach((card, index) => {
+                card.addEventListener("click", function () {
+                    selectedPlayerIndex = index; // Simpan indeks pemain yang dipilih
+                    document.querySelectorAll(".card.btn").forEach(c => c.classList.remove("active"));
+                    card.classList.add("active"); // Beri efek visual
+                });
+            });
+
+            // Tambah atau Kurangi Poin
+            function updatePoints(isAdding) {
+                if (selectedPlayerIndex === null) {
+                    alert("Pilih pemain terlebih dahulu!");
+                    return;
+                }
+
+                let inputElement = document.querySelector("input[placeholder='insert number']");
+                let inputValue = parseInt(inputElement.value, 10);
+
+                if (isNaN(inputValue) || inputValue <= 0) {
+                    alert("Masukkan angka yang valid!");
+                    return;
+                }
+
+                // Update poin pemain yang dipilih
+                if (isAdding) {
+                    playerPoints[selectedPlayerIndex] += inputValue;
+                } else {
+                    playerPoints[selectedPlayerIndex] -= inputValue;
+                }
+
+                localStorage.setItem("playerPoints", JSON.stringify(playerPoints)); // Simpan ke localStorage
+                updatePlayerPoints(); // Perbarui tampilan
+                inputElement.value = ""; // Kosongkan input setelah submit
+            }
+
+            // Event listener untuk tombol plus dan minus
+            document.getElementById("plusPoint").addEventListener("click", function (event) {
+                event.preventDefault();
+                updatePoints(true);
+            });
+
+            document.getElementById("minusPoint").addEventListener("click", function (event) {
+                event.preventDefault();
+                updatePoints(false);
+            });
+
+            // Reset game dan hapus poin
+            document.getElementById("newGameBtn").addEventListener("click", function () {
+                localStorage.removeItem("playerPoints"); // Hapus poin dari localStorage
+                playerPoints = [0, 0, 0, 0]; // Reset poin ke 0
+                updatePlayerPoints();
+            });
+
+            updatePlayerPoints(); // Perbarui poin saat pertama kali halaman dimuat
+        });
+    </script>
+</body>
+
+</html>

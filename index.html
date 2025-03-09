@@ -85,7 +85,7 @@
             </div>
 
             <!-- Card Button -->
-            <div class="container mt-3">
+            <div class="container mt-3 mb-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
                         <button id="playerCard1" class="card btn btn-outline-primary mb-3 w-100">
@@ -117,7 +117,7 @@
             </div>
 
             <!-- Form Input -->
-            <div class="container mb-3">
+            <div class="container mt-3 mb-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
                         <div class="card">
@@ -136,6 +136,8 @@
                                             +
                                         </button>
                                     </div>
+                                    <button type="button" id="resetPointBtn"
+                                        class="btn btn-lg btn-danger fw-semibold w-100 fs-2 mb-3">Kena Keme</button>
                                     <button type="button" id="newGameBtn"
                                         class="btn btn-lg btn-primary fw-semibold w-100 fs-2" data-bs-toggle="modal"
                                         data-bs-target="#formInputPlayerNameModal">New
@@ -320,6 +322,23 @@
         playerCard().playerCard3.addEventListener('click', () => selectPlayer(playerCard().playerCard3, pointPlayer().pointPlayer3));
         playerCard().playerCard4.addEventListener('click', () => selectPlayer(playerCard().playerCard4, pointPlayer().pointPlayer4));
 
+        const resetPoints = () => {
+            if (selectedPlayer) {
+                let currentPoints = parseInt(selectedPlayer.textContent) || 0;
+
+                if (currentPoints <= 0) {
+                    alert("Poin Anda 0 atau kurang dari 0!");
+                    return;
+                }
+
+                selectedPlayer.textContent = 0;
+                saveData(); // Simpan data setelah reset
+                alert("Selamat!, Anda kena keme, point Anda kembali lagi ke 0");
+            } else {
+                alert("Pilih pemain terlebih dahulu!");
+            }
+        };
+
         // Fungsi untuk mengupdate poin
         const updatePoints = (amount) => {
             if (selectedPlayer) {
@@ -338,6 +357,9 @@
                 alert("Pilih pemain terlebih dahulu!");
             }
         };
+
+        // Event listener untuk tombol reset
+        document.getElementById('resetPointBtn').addEventListener('click', resetPoints);
 
         // Event listener untuk tombol minus dan plus
         document.getElementById('minusPointBtn').addEventListener('click', () => updatePoints(-1));

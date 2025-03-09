@@ -11,7 +11,7 @@
 
 <body data-bs-theme="light">
     <nav>
-        <div class="container mb-3">
+        <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
                     <ul id="nav-underline" class="nav nav-underline justify-content-center gap-3">
@@ -32,7 +32,7 @@
     <main>
         <section id="cekih-pont-page">
             <!-- Modal -->
-            <div class="container mt-3 mb-3">
+            <div class="container mb-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
                         <div class="modal fade" id="formInputPlayerNameModal" data-bs-backdrop="static"
@@ -84,7 +84,7 @@
             </div>
 
             <!-- Card Button -->
-            <div class="container mt-3 mb-3">
+            <div class="container mt-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
                         <button id="playerCard1" class="card btn btn-outline-primary mb-3 w-100">
@@ -116,7 +116,7 @@
             </div>
 
             <!-- Form Input -->
-            <div class="container mt-3 mb-3">
+            <div class="container mb-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
                         <div class="card">
@@ -150,7 +150,7 @@
             <div class="container mt-3 mb-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
-                        <h1>Winner History</h1>
+                        <h1>Fitur Ini Belum Tersedia</h1>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
         document.getElementById('nav-underline').addEventListener('click', (e) => {
             if (e.target.innerText === 'cekih point') {
                 openPage('cekih-pont-page', 'section');
-            } else if (e.target.innerText === 'riwayat pemenang') {
+            } else if (e.target.innerText === 'riwayat') {
                 openPage('winner-history-page', 'section');
             }
         });
@@ -304,10 +304,10 @@
         // Fungsi untuk memilih pemain
         const selectPlayer = (playerCardElement, pointElement) => {
             // Hapus warna dari semua kartu
-            Object.values(playerCard()).forEach(card => card.classList.remove('bg-primary'));
+            Object.values(playerCard()).forEach(card => card.classList.remove('bg-primary', 'text-light'));
 
             // Tambahkan warna ke kartu yang dipilih
-            playerCardElement.classList.add('bg-primary');
+            playerCardElement.classList.add('bg-primary', 'text-light');
 
             // Simpan elemen poin pemain yang dipilih
             selectedPlayer = pointElement;
@@ -345,6 +345,12 @@
         // Event listener untuk tombol "New Game"
         document.getElementById('newGameBtn').addEventListener('click', () => {
             localStorage.removeItem('playersData'); // Hapus data dari localStorage
+
+            // Reset semua poin ke 0
+            Object.values(pointPlayer()).forEach(point => {
+                point.textContent = '0';
+            });
+
             loadData(); // Pastikan UI diperbarui setelah penghapusan
         });
 

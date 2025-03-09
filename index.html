@@ -326,8 +326,8 @@
             if (selectedPlayer) {
                 let currentPoints = parseInt(selectedPlayer.textContent) || 0;
 
-                if (currentPoints <= 0) {
-                    alert("Poin Anda 0 atau kurang dari 0!");
+                if (currentPoints < 100) {
+                    alert("Poin Anda kurang dari 100! Anda tidak bisa ke keme");
                     return;
                 }
 

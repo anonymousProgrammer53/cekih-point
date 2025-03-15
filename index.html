@@ -313,12 +313,23 @@
             let inputValue = parseInt(getPointControlForm().insertNumber.value) || 0;
             let currentPoints = parseInt(playerPointElement.innerText) || 0;
 
-            if (isNaN(inputValue) || inputValue <= 0 || inputValue % 5 !== 0 || inputValue > 1000) {
-                alert('Masukkan angka yang valid! (hanya kelipatan 5, max 1000)');
+            if (isNaN(inputValue) || inputValue <= 0 || inputValue % 5 !== 0 || inputValue > 1050) {
+                alert('Masukkan angka yang valid! (hanya kelipatan 5, max 1050)');
                 return;
             }
 
             let newPoints = isAdding ? currentPoints + inputValue : currentPoints - inputValue;
+
+            // **Batas maksimal 1050**
+            if (newPoints > 1050) {
+                alert('Maksimal poin adalah 1050!');
+                return;
+            }
+
+            if (newPoints < 0) {
+                newPoints = 0; // Pastikan poin tidak negatif
+            }
+
             playerPointElement.innerText = newPoints;
 
             // 🔥 Simpan ke localStorage dengan key yang unik
@@ -330,6 +341,7 @@
 
             getPointControlForm().insertNumber.value = '';
         };
+
 
         const lastPlayerPoints = () => {
             let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};

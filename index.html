@@ -12,18 +12,19 @@
 
 <body data-bs-theme="light">
     <nav>
-        <div class="container">
+        <div class="container mb-3">
             <div class="row">
                 <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
-                    <ul id="nav-underline" class="nav nav-underline justify-content-center gap-3">
+                    <ul class="nav nav-underline justify-content-center gap-3">
                         <li class="nav-item">
-                            <button class="nav-link">cekih point</button>
+                            <button class="nav-link active">cekih
+                                point</button>
                         </li>
                         <li class="nav-item">
                             <button class="nav-link">riwayat</button>
                         </li>
                         <li class="nav-item">
-                            <button id="toggleMode" class="nav-link btn-dark">🌙 dark mode</button>
+                            <button id="toggleMode" class="nav-link btn-dark">🌙 gelap</button>
                         </li>
                     </ul>
                 </div>
@@ -31,102 +32,47 @@
         </div>
     </nav>
     <main>
-        <section id="cekih-pont-page">
-            <!-- Modal -->
-            <div class="container mb-3">
+        <section id="cekihPointPage">
+            <div class="container mt-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
-                        <div class="modal fade" id="formInputPlayerNameModal" data-bs-backdrop="static"
-                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="inputPlayerModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title m-auto" id="inputPlayerModalLabel">Masukkan Nama Pemain
-                                        </h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="inputPlayerForm">
-                                            <div class="mb-3">
-                                                <label for="inputPlayerName1" class="form-label fw-semibold">Player 1
-                                                    <span class="text-danger">*</span></label>
-                                                <input id="inputPlayerName1" class="form-control " type="text"
-                                                    placeholder="Masukkan nama" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="inputPlayerName2" class="form-label fw-semibold">Player 2
-                                                    <span class="text-danger">*</span></label>
-                                                <input id="inputPlayerName2" class="form-control " type="text"
-                                                    placeholder="Masukkan nama" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="inputPlayerName3" class="form-label fw-semibold">Player 3
-                                                    <span class="text-danger">*</span></label>
-                                                <input id="inputPlayerName3" class="form-control " type="text"
-                                                    placeholder="Masukkan nama" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="inputPlayerName4" class="form-label fw-semibold">Player 4
-                                                    <span class="text-danger">*</span></label>
-                                                <input id="inputPlayerName4" class="form-control " type="text"
-                                                    placeholder="Masukkan nama" required>
-                                            </div>
-                                            <div class="d-grid mt-4">
-                                                <button type="button" id="playNowBtn"
-                                                    class="btn btn-lg btn-primary fw-semibold">Main Sekarang!</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                        <div id="playerCard1" class="card btn btn-outline-primary mb-3 w-100 text-start">
+                            <div class="card-body pt-2 pb-2 d-flex align-items-center justify-content-between">
+                                <h6 class="card-subtitle m-0">Player 1</h6>
+                                <h5 class="card-title m-0">0</h5>
+                            </div>
+                        </div>
+                        <div id="playerCard2" class="card btn btn-outline-primary mb-3 w-100 text-start">
+                            <div class="card-body pt-2 pb-2 d-flex align-items-center justify-content-between">
+                                <h6 class="card-subtitle m-0">Player 2</h6>
+                                <h5 class="card-title m-0">0</h5>
+                            </div>
+                        </div>
+                        <div id="playerCard3" class="card btn btn-outline-primary mb-3 w-100 text-start">
+                            <div class="card-body pt-2 pb-2 d-flex align-items-center justify-content-between">
+                                <h6 class="card-subtitle m-0">Player 3</h6>
+                                <h5 class="card-title m-0">0</h5>
+                            </div>
+                        </div>
+                        <div id="playerCard4" class="card btn btn-outline-primary mb-3 w-100 text-start">
+                            <div class="card-body pt-2 pb-2 d-flex align-items-center justify-content-between">
+                                <h6 class="card-subtitle m-0">Player 4</h6>
+                                <h5 class="card-title m-0">0</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Card Button -->
-            <div class="container mt-3">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
-                        <button id="playerCard1" class="card btn btn-outline-primary mb-3 w-100">
-                            <div class="card-body d-flex align-items-center justify-content-between p-2">
-                                <span id="playerName1" class="fw-bold">Player 1</span>
-                                <span id="pointPlayer1" class="fs-5 fw-bold">0</span>
-                            </div>
-                        </button>
-                        <button id="playerCard2" class="card btn btn-outline-primary  mb-3 w-100">
-                            <div class="card-body d-flex align-items-center justify-content-between p-2">
-                                <span id="playerName2" class="fw-bold">Player 2</span>
-                                <span id="pointPlayer2" class="fs-5 fw-bold">0</span>
-                            </div>
-                        </button>
-                        <button id="playerCard3" class="card btn btn-outline-primary  mb-3 w-100">
-                            <div class="card-body d-flex align-items-center justify-content-between p-2">
-                                <span id="playerName3" class="fw-bold">Player 3</span>
-                                <span id="pointPlayer3" class="fs-5 fw-bold">0</span>
-                            </div>
-                        </button>
-                        <button id="playerCard4" class="card btn btn-outline-primary mb-3 w-100">
-                            <div class="card-body d-flex align-items-center justify-content-between p-2">
-                                <span id="playerName4" class="fw-bold">Player 4</span>
-                                <span id="pointPlayer4" class="fs-5 fw-bold">0</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Form Input -->
             <div class="container mb-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
                         <div class="card">
                             <div class="card-body">
-                                <form id="counterForm">
-                                    <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
-                                        <input id="insertNumber"
-                                            class="form-control form-control-lg text-center w-100 fs-3" type="number"
-                                            placeholder="Insert number" aria-label="insert number" required>
+                                <form id="pointControlForm">
+                                    <div class="d-flex align-items-center gap-3 justify-content-between
+                                     mb-3">
+                                        <input type="number" id="insertNumber" class="form-control form-control-lg fs-3"
+                                            placeholder="insert number" aria-label=".form-control-lg">
                                         <button type="button" id="minusPointBtn"
                                             class="btn btn-lg btn-danger fw-bold w-25 fs-3">
                                             -
@@ -137,23 +83,66 @@
                                         </button>
                                     </div>
                                     <button type="button" id="resetPointBtn"
-                                        class="btn btn-lg btn-danger fw-semibold w-100 fs-2 mb-3">Kena Keme</button>
+                                        class="btn btn-danger btn-lg d-block mb-3 w-100 fw-semibold fs-4">KENA
+                                        KEME</button>
                                     <button type="button" id="newGameBtn"
-                                        class="btn btn-lg btn-primary fw-semibold w-100 fs-2" data-bs-toggle="modal"
-                                        data-bs-target="#formInputPlayerNameModal">New
-                                        Game</button>
+                                        class="btn btn-primary btn-lg d-block w-100 fw-semibold fs-4"
+                                        data-bs-toggle="modal" data-bs-target="#formInputPlayerNameModal">Permainan
+                                        Baru</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="formInputPlayerNameModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="inputPlayerModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title m-auto">Masukkan Nama Pemain</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form id="playerNameForm">
+                                <div class="mb-3">
+                                    <label for="inputPlayerName1" class="form-label fw-semibold">Player 1
+                                        <span class="text-danger">*</span></label>
+                                    <input id="inputPlayerName1" class="form-control" type="text"
+                                        placeholder="Masukkan nama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputPlayerName2" class="form-label fw-semibold">Player 2
+                                        <span class="text-danger">*</span></label>
+                                    <input id="inputPlayerName2" class="form-control" type="text"
+                                        placeholder="Masukkan nama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputPlayerName3" class="form-label fw-semibold">Player 3
+                                        <span class="text-danger">*</span></label>
+                                    <input id="inputPlayerName3" class="form-control" type="text"
+                                        placeholder="Masukkan nama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputPlayerName4" class="form-label fw-semibold">Player 4
+                                        <span class="text-danger">*</span></label>
+                                    <input id="inputPlayerName4" class="form-control" type="text"
+                                        placeholder="Masukkan nama" required>
+                                </div>
+                                <div class="d-grid mt-4">
+                                    <button type="button" id="playNowBtn"
+                                        class="btn btn-primary btn-lg d-block w-100 fw-semibold">Main Sekarang!</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="winner-history-page" class="d-none">
+        <section id="historyPage" class="d-none">
             <div class="container mt-3 mb-3">
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
-                        <h1>Fitur Ini Belum Tersedia</h1>
+                        <h1>Riwayat Permainan</h1>
                     </div>
                 </div>
             </div>
@@ -177,214 +166,279 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        // Fungsi Open Page dengan LocalStorage
-        const openPage = (pageName, pageNameAll) => {
-            // Sembunyikan semua section
-            document.querySelectorAll(pageNameAll).forEach(section => {
-                section.classList.remove('d-block');
-                section.classList.add('d-none');
+        // fungsi untuk berpindah2 halaman
+        const openPage = (allPage, allLink, pageNameId, currentElement, activeTab) => {
+            document.querySelectorAll(allPage).forEach((page) => {
+                page.classList.remove('d-block');
+                page.classList.add('d-none');
             });
 
-            // Tampilkan halaman yang dipilih
-            document.getElementById(pageName).classList.remove('d-none');
-            document.getElementById(pageName).classList.add('d-block');
+            document.querySelectorAll(allLink).forEach((link) => {
+                link.classList.remove('active');
+            });
 
-            // Simpan halaman yang sedang dibuka ke localStorage
-            localStorage.setItem("lastPage", pageName);
-        }
+            document.getElementById(pageNameId).classList.remove('d-none');
+            document.getElementById(pageNameId).classList.add('d-block');
 
-        // Event Listener untuk navigasi
-        document.getElementById('nav-underline').addEventListener('click', (e) => {
-            if (e.target.innerText === 'cekih point') {
-                openPage('cekih-pont-page', 'section');
-            } else if (e.target.innerText === 'riwayat') {
-                openPage('winner-history-page', 'section');
+            currentElement.classList.add('active');
+
+            localStorage.setItem(activeTab, pageNameId);
+        };
+
+        document.querySelector('nav').addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-link')) {
+                if (e.target.innerText.trim() === 'cekih point') {
+                    openPage('main > section', 'nav .nav-link', 'cekihPointPage', e.target, 'activeTab');
+                } else if (e.target.innerText.trim() === 'riwayat') {
+                    openPage('main > section', 'nav .nav-link', 'historyPage', e.target, 'activeTab');
+                }
             }
         });
 
-        // Pasang event listener ke tombol
-        document.getElementById("toggleMode").addEventListener("click", // Fungsi untuk toggle mode
-            () => {
-                if (localStorage.getItem("theme") === "light") {
-                    document.body.setAttribute("data-bs-theme", "dark");
-                    document.getElementById("toggleMode").innerText = "☀️ light mode";
-                    document.getElementById("toggleMode").classList.remove("btn-dark");
-                    document.getElementById("toggleMode").classList.add("btn-light");
-                    currentMode = "dark";
-                } else {
-                    document.body.setAttribute("data-bs-theme", "light");
-                    document.getElementById("toggleMode").innerText = "🌙 dark mode";
-                    document.getElementById("toggleMode").classList.remove("btn-light");
-                    document.getElementById("toggleMode").classList.add("btn-dark");
-                    currentMode = "light";
+        // fungsi untuk mengembalikan halaman terakhir yang aktif
+        const lastActivePage = () => {
+            return document.querySelectorAll('nav .nav-link').forEach((navLink) => {
+                if ((navLink.innerText.trim() === 'cekih point' && localStorage.getItem('activeTab') === 'cekihPointPage') ||
+                    (navLink.innerText.trim() === 'riwayat' && localStorage.getItem('activeTab') === 'historyPage')) {
+                    navLink.click();
                 }
-                // Simpan mode ke localStorage
-                localStorage.setItem("theme", currentMode);
             });
+        }
 
-        // Ambil elemen input untuk nama setiap pemain
-        const inputPlayerName = () => {
-            return {
-                valueInputPlayerName1: document.getElementById('inputPlayerName1').value,
-                valueInputPlayerName2: document.getElementById('inputPlayerName2').value,
-                valueInputPlayerName3: document.getElementById('inputPlayerName3').value,
-                valueInputPlayerName4: document.getElementById('inputPlayerName4').value
-            };
-        };
+        // fungsi untuk mengubah tema bg warna
+        document.getElementById("toggleMode").addEventListener("click", (e) => {
+            if (document.body.getAttribute("data-bs-theme") === "light") {
+                document.body.setAttribute("data-bs-theme", "dark");
+                localStorage.setItem("dataBsTheme", "dark");
+                e.target.innerText = "☀️ terang";
+            } else {
+                document.body.setAttribute("data-bs-theme", "light");
+                localStorage.setItem("dataBsTheme", "light");
+                e.target.innerText = "🌙 gelap";
+            }
+        });
 
-        // Ambil elemen kartu pemain berdasarkan ID
-        const playerCard = () => {
+        // fungsi untuk mengembalikan tema bg warna terakhir yang aktif
+        const lastActiveDataBsTheme = () => {
+            if (localStorage.getItem("dataBsTheme") === "dark") {
+                document.body.setAttribute("data-bs-theme", "dark");
+                document.getElementById("toggleMode").innerText = "☀️ terang";
+            } else {
+                document.body.setAttribute("data-bs-theme", "light");
+                document.getElementById("toggleMode").innerText = "🌙 gelap";
+            }
+        }
+
+        // fungsi untuk mengambil komponen kartu pemain berdasarkan id
+        const getPlayerCard = () => {
             return {
                 playerCard1: document.getElementById('playerCard1'),
                 playerCard2: document.getElementById('playerCard2'),
                 playerCard3: document.getElementById('playerCard3'),
                 playerCard4: document.getElementById('playerCard4')
             };
-        };
+        }
 
-        // Ambil elemen untuk menampilkan nama pemain
-        const playerName = () => {
+        // fungsi untuk mengambil komponen nama pemain berdasarkan fungsi getPlayerCard
+        const getPlayerName = () => {
             return {
-                playerName1: document.getElementById('playerName1'),
-                playerName2: document.getElementById('playerName2'),
-                playerName3: document.getElementById('playerName3'),
-                playerName4: document.getElementById('playerName4')
+                playerName1: getPlayerCard().playerCard1.querySelector('.card-subtitle'),
+                playerName2: getPlayerCard().playerCard2.querySelector('.card-subtitle'),
+                playerName3: getPlayerCard().playerCard3.querySelector('.card-subtitle'),
+                playerName4: getPlayerCard().playerCard4.querySelector('.card-subtitle')
             };
-        };
+        }
 
-        // Ambil elemen untuk menampilkan poin pemain
-        const pointPlayer = () => {
+        // fungsi untuk mengambil komponen poin pemain berdasarkan fungsi getPlayerCard
+        const getPlayerPoint = () => {
             return {
-                pointPlayer1: document.getElementById('pointPlayer1'),
-                pointPlayer2: document.getElementById('pointPlayer2'),
-                pointPlayer3: document.getElementById('pointPlayer3'),
-                pointPlayer4: document.getElementById('pointPlayer4')
+                playerPoint1: getPlayerCard().playerCard1.querySelector('.card-title'),
+                playerPoint2: getPlayerCard().playerCard2.querySelector('.card-title'),
+                playerPoint3: getPlayerCard().playerCard3.querySelector('.card-title'),
+                playerPoint4: getPlayerCard().playerCard4.querySelector('.card-title'),
+            };
+        }
+
+        // fungsi untuk mengambil komponen pointControlForm
+        const getPointControlForm = () => {
+            const pointControlForm = document.getElementById('pointControlForm');
+            return {
+                pointControlForm: pointControlForm,
+                insertNumber: pointControlForm.querySelector('#insertNumber'),
+                minusPointBtn: pointControlForm.querySelector('#minusPointBtn'),
+                plusPointBtn: pointControlForm.querySelector('#plusPointBtn'),
+                resetPointBtn: pointControlForm.querySelector('#resetPointBtn'),
+                newGameBtn: pointControlForm.querySelector('#newGameBtn'),
             };
         };
 
-        // Ambil elemen input angka
-        const insertNumber = () => document.getElementById('insertNumber');
-
-        let selectedPlayer = null; // Untuk menyimpan elemen poin pemain yang dipilih
-
-        // Fungsi untuk menyimpan data ke localStorage
-        const saveData = () => {
-            let playersData = {
-                names: [
-                    playerName().playerName1.textContent,
-                    playerName().playerName2.textContent,
-                    playerName().playerName3.textContent,
-                    playerName().playerName4.textContent
-                ],
-                points: [
-                    pointPlayer().pointPlayer1.textContent,
-                    pointPlayer().pointPlayer2.textContent,
-                    pointPlayer().pointPlayer3.textContent,
-                    pointPlayer().pointPlayer4.textContent
-                ]
-            };
-            localStorage.setItem('playersData', JSON.stringify(playersData));
-        };
-
-        // Fungsi untuk mengambil data dari localStorage saat halaman dimuat
-        const loadData = () => {
-            let savedData = localStorage.getItem('playersData');
-            if (savedData) {
-                let playersData = JSON.parse(savedData);
-
-                playerName().playerName1.textContent = playersData.names[0] || 'Player 1';
-                playerName().playerName2.textContent = playersData.names[1] || 'Player 2';
-                playerName().playerName3.textContent = playersData.names[2] || 'Player 3';
-                playerName().playerName4.textContent = playersData.names[3] || 'Player 4';
-
-                pointPlayer().pointPlayer1.textContent = playersData.points[0] || '0';
-                pointPlayer().pointPlayer2.textContent = playersData.points[1] || '0';
-                pointPlayer().pointPlayer3.textContent = playersData.points[2] || '0';
-                pointPlayer().pointPlayer4.textContent = playersData.points[3] || '0';
-            }
-        };
-
-        // Fungsi untuk memilih pemain
-        const selectPlayer = (playerCardElement, pointElement) => {
-            // Hapus warna dari semua kartu
-            Object.values(playerCard()).forEach(card => card.classList.remove('bg-primary', 'text-light'));
-
-            // Tambahkan warna ke kartu yang dipilih
-            playerCardElement.classList.add('bg-primary', 'text-light');
-
-            // Simpan elemen poin pemain yang dipilih
-            selectedPlayer = pointElement;
-        };
-
-        // Tambahkan event listener ke setiap kartu pemain
-        playerCard().playerCard1.addEventListener('click', () => selectPlayer(playerCard().playerCard1, pointPlayer().pointPlayer1));
-        playerCard().playerCard2.addEventListener('click', () => selectPlayer(playerCard().playerCard2, pointPlayer().pointPlayer2));
-        playerCard().playerCard3.addEventListener('click', () => selectPlayer(playerCard().playerCard3, pointPlayer().pointPlayer3));
-        playerCard().playerCard4.addEventListener('click', () => selectPlayer(playerCard().playerCard4, pointPlayer().pointPlayer4));
-
-        const resetPoints = () => {
-            if (selectedPlayer) {
-                let currentPoints = parseInt(selectedPlayer.textContent) || 0;
-
-                if (currentPoints < 100) {
-                    alert("Poin Anda kurang dari 100! Anda tidak bisa ke keme");
-                    return;
-                }
-
-                selectedPlayer.textContent = 0;
-                saveData(); // Simpan data setelah reset
-                alert("Selamat!, Anda kena keme, point Anda kembali lagi ke 0");
-            } else {
-                alert("Pilih pemain terlebih dahulu!");
-            }
-        };
-
-        // Fungsi untuk mengupdate poin
-        const updatePoints = (amount) => {
-            if (selectedPlayer) {
-                let currentPoints = parseInt(selectedPlayer.textContent) || 0;
-                let inputValue = parseInt(insertNumber().value) || 0;
-
-                if (isNaN(inputValue) || inputValue <= 0) {
-                    alert("Masukkan angka yang valid!");
-                    return;
-                }
-
-                selectedPlayer.textContent = currentPoints + (amount * inputValue);
-                insertNumber().value = ""; // Reset nilai input setelah update
-                saveData(); // Simpan data setelah perubahan poin
-            } else {
-                alert("Pilih pemain terlebih dahulu!");
-            }
-        };
-
-        // Event listener untuk tombol reset
-        document.getElementById('resetPointBtn').addEventListener('click', resetPoints);
-
-        // Event listener untuk tombol minus dan plus
-        document.getElementById('minusPointBtn').addEventListener('click', () => updatePoints(-1));
-        document.getElementById('plusPointBtn').addEventListener('click', () => updatePoints(1));
-
-        // Event listener untuk tombol "New Game"
-        document.getElementById('newGameBtn').addEventListener('click', () => {
-            localStorage.removeItem('playersData'); // Hapus data dari localStorage
-
-            // Reset semua poin ke 0
-            Object.values(pointPlayer()).forEach(point => {
-                point.textContent = '0';
+        // fungsi untuk memilih pemain
+        const selectedPlayerCard = (selectedPlayer) => {
+            Object.values(getPlayerCard()).forEach((card) => {
+                card.classList.remove('bg-primary');
             });
 
-            loadData(); // Pastikan UI diperbarui setelah penghapusan
+            selectedPlayer.classList.add('bg-primary');
+        }
+
+        // fungsi untuk mentriger event fungsi memilih pemain
+        getPlayerCard().playerCard1.addEventListener('click', () => {
+            selectedPlayerCard(getPlayerCard().playerCard1);
         });
 
-        // Modal Bootstrap untuk input nama pemain
-        let formInputPlayerNameModal = new bootstrap.Modal(document.getElementById('formInputPlayerNameModal'));
+        getPlayerCard().playerCard2.addEventListener('click', () => {
+            selectedPlayerCard(getPlayerCard().playerCard2);
+        });
+
+        getPlayerCard().playerCard3.addEventListener('click', () => {
+            selectedPlayerCard(getPlayerCard().playerCard3);
+        });
+
+        getPlayerCard().playerCard4.addEventListener('click', () => {
+            selectedPlayerCard(getPlayerCard().playerCard4);
+        });
+
+        const updatePlayerPoint = (isAdding) => {
+            let selectedPlayer = Object.values(getPlayerCard()).find(card => card.classList.contains('bg-primary'));
+
+            if (!selectedPlayer) {
+                alert('Pilih pemain terlebih dahulu!');
+                return;
+            }
+
+            let playerPointElements = getPlayerPoint();
+            let playerPointKey = Object.keys(getPlayerCard()).find(key => getPlayerCard()[key] === selectedPlayer);
+            let playerPointElement = playerPointElements[playerPointKey.replace('Card', 'Point')];
+
+            let inputValue = parseInt(getPointControlForm().insertNumber.value) || 0;
+            let currentPoints = parseInt(playerPointElement.innerText) || 0;
+
+            if (isNaN(inputValue) || inputValue <= 0 || inputValue % 5 !== 0 || inputValue > 1000) {
+                alert('Masukkan angka yang valid! (hanya kelipatan 5, max 1000)');
+                return;
+            }
+
+            let newPoints = isAdding ? currentPoints + inputValue : currentPoints - inputValue;
+            playerPointElement.innerText = newPoints;
+
+            // 🔥 Simpan ke localStorage dengan key yang unik
+            let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
+            playerPoints[playerPointKey] = newPoints;
+            localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
+
+            console.log('Poin tersimpan:', playerPoints); // 🔍 Debugging untuk melihat apakah poin tersimpan
+
+            getPointControlForm().insertNumber.value = '';
+        };
+
+        const lastPlayerPoints = () => {
+            let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
+            // Tetapkan nilai dari localStorage atau default 0
+            getPlayerPoint().playerPoint1.innerText = playerPoints.playerCard1 || 0;
+            getPlayerPoint().playerPoint2.innerText = playerPoints.playerCard2 || 0;
+            getPlayerPoint().playerPoint3.innerText = playerPoints.playerCard3 || 0;
+            getPlayerPoint().playerPoint4.innerText = playerPoints.playerCard4 || 0;
+        };
+
+        const resetPlayerPoint = () => {
+            let selectedPlayer = Object.values(getPlayerCard()).find(card => card.classList.contains('bg-primary'));
+
+            if (!selectedPlayer) {
+                alert('Pilih pemain terlebih dahulu!');
+                return;
+            }
+
+            // Dapatkan elemen poin pemain
+            let playerPointElements = getPlayerPoint();
+            let playerPointKey = Object.keys(getPlayerCard()).find(key => getPlayerCard()[key] === selectedPlayer);
+            let playerPointElement = playerPointElements[playerPointKey.replace('Card', 'Point')];
+
+            // Ambil nilai poin saat ini
+            let currentPoints = parseInt(playerPointElement.innerText) || 0;
+
+            // Cek apakah poin sudah mencapai 100 atau lebih
+            if (currentPoints < 100) {
+                alert('Poin pemain ini belum mencapai 100. Tidak bisa diKEME!');
+                return;
+            }
+
+            // Konfirmasi sebelum reset
+            let confirmReset = confirm("Apakah Anda yakin ingin mengKEME pemain ini?");
+            if (!confirmReset) return; // Jika user klik "Batal", hentikan proses
+
+            // Set poin di tampilan menjadi 0
+            playerPointElement.innerText = 0;
+
+            // Update data di localStorage
+            let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
+            playerPoints[playerPointKey] = 0;
+            localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
+
+            // Alert sukses
+            alert(`Selamat Anda kena KEME, point Anda kembali lagi ke 0`);
+        };
+
+        const newGame = () => {
+            // Reset poin pemain ke 0
+            let playerPoints = {};
+            let playerPointElements = getPlayerPoint();
+            Object.keys(playerPointElements).forEach(key => {
+                playerPointElements[key].innerText = 0;
+                playerPoints[key.replace('Point', 'Card')] = 0;
+            });
+
+            // Reset nama pemain ke default
+            let playerNames = {};
+            let playerNameElements = getPlayerName();
+            Object.keys(playerNameElements).forEach((key, index) => {
+                let defaultName = `Pemain ${index + 1}`;
+                playerNameElements[key].innerText = defaultName;
+                playerNames[key.replace('Name', 'Card')] = defaultName;
+            });
+
+            // Simpan ke localStorage
+            localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
+            localStorage.setItem('playerNames', JSON.stringify(playerNames));
+
+            // Tampilkan modal box hanya jika user setuju
+            let newGameModal = new bootstrap.Modal(document.getElementById('newGameModal'));
+            newGameModal.show();
+        };
+
+        // Event listener untuk tombol plus dan minus
+        getPointControlForm().minusPointBtn.addEventListener('click', () => updatePlayerPoint(false));
+        getPointControlForm().plusPointBtn.addEventListener('click', () => updatePlayerPoint(true));
+        getPointControlForm().resetPointBtn.addEventListener('click', () => resetPlayerPoint());
+        getPointControlForm().newGameBtn.addEventListener('click', newGame);
+
+        const getPlayerNameForm = () => {
+            const playerNameForm = document.getElementById('playerNameForm');
+            return {
+                playerNameForm: playerNameForm,
+                valueInputPlayerName1: playerNameForm.querySelector('#inputPlayerName1').value,
+                valueInputPlayerName2: playerNameForm.querySelector('#inputPlayerName2').value,
+                valueInputPlayerName3: playerNameForm.querySelector('#inputPlayerName3').value,
+                valueInputPlayerName4: playerNameForm.querySelector('#inputPlayerName4').value,
+                playNowBtn: playerNameForm.querySelector('#playNowBtn'),
+            };
+        };
 
         document.getElementById('playNowBtn').addEventListener('click', () => {
-            playerName().playerName1.textContent = inputPlayerName().valueInputPlayerName1.trim() || 'Player 1';
-            playerName().playerName2.textContent = inputPlayerName().valueInputPlayerName2.trim() || 'Player 2';
-            playerName().playerName3.textContent = inputPlayerName().valueInputPlayerName3.trim() || 'Player 3';
-            playerName().playerName4.textContent = inputPlayerName().valueInputPlayerName4.trim() || 'Player 4';
+            let playerNames = {
+                playerCard1: getPlayerNameForm().valueInputPlayerName1.trim() || 'Player 1',
+                playerCard2: getPlayerNameForm().valueInputPlayerName2.trim() || 'Player 2',
+                playerCard3: getPlayerNameForm().valueInputPlayerName3.trim() || 'Player 3',
+                playerCard4: getPlayerNameForm().valueInputPlayerName4.trim() || 'Player 4',
+            };
+
+            // Set nama pemain di UI
+            getPlayerName().playerName1.textContent = playerNames.playerCard1;
+            getPlayerName().playerName2.textContent = playerNames.playerCard2;
+            getPlayerName().playerName3.textContent = playerNames.playerCard3;
+            getPlayerName().playerName4.textContent = playerNames.playerCard4;
+
+            // Simpan ke localStorage
+            localStorage.setItem('playerNames', JSON.stringify(playerNames));
 
             // Kosongkan input setelah submit
             document.getElementById('inputPlayerName1').value = '';
@@ -392,28 +446,40 @@
             document.getElementById('inputPlayerName3').value = '';
             document.getElementById('inputPlayerName4').value = '';
 
-            saveData(); // Simpan data setelah memasukkan nama pemain
-
+            // Tutup modal jika ada
             if (formInputPlayerNameModal) {
                 formInputPlayerNameModal.hide();
             }
         });
 
-        window.addEventListener('DOMContentLoaded', // Terapkan mode saat halaman dimuat
-            () => {
-                // Cek apakah ada halaman terakhir yang tersimpan di localStorage
-                const lastPage = localStorage.getItem("lastPage") || "cekih-pont-page";
-                openPage(lastPage, 'section'); // Tampilkan halaman terakhir yang disimpan
 
-                if (localStorage.getItem("theme") === "dark") {
-                    document.body.setAttribute("data-bs-theme", "dark");
-                    document.getElementById("toggleMode").innerText = "☀️ light mode";
-                    document.getElementById("toggleMode").classList.remove("btn-dark");
-                    document.getElementById("toggleMode").classList.add("btn-light");
-                }
+        const lastPlayerNames = () => {
+            let playerNames = JSON.parse(localStorage.getItem('playerNames')) || {
+                playerCard1: 'Player 1',
+                playerCard2: 'Player 2',
+                playerCard3: 'Player 3',
+                playerCard4: 'Player 4'
+            };
 
-                loadData();
-            });
+            getPlayerName().playerName1.textContent = playerNames.playerCard1;
+            getPlayerName().playerName2.textContent = playerNames.playerCard2;
+            getPlayerName().playerName3.textContent = playerNames.playerCard3;
+            getPlayerName().playerName4.textContent = playerNames.playerCard4;
+        };
+
+        // Panggil saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            let modalElement = document.getElementById('formInputPlayerNameModal');
+
+            if (modalElement) {  // Pastikan elemen modal ada sebelum inisialisasi
+                formInputPlayerNameModal = new bootstrap.Modal(modalElement);
+            }
+
+            lastActivePage();
+            lastActiveDataBsTheme();
+            lastPlayerPoints();
+            lastPlayerNames();
+        });
     </script>
 </body>
 

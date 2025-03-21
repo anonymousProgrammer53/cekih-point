@@ -299,49 +299,45 @@
         });
 
         const updatePlayerPoint = (isAdding) => {
-            let selectedPlayer = Object.values(getPlayerCard()).find(card => card.classList.contains('bg-primary'));
+    let selectedPlayer = Object.values(getPlayerCard()).find(card => card.classList.contains('bg-primary'));
 
-            if (!selectedPlayer) {
-                alert('Pilih pemain terlebih dahulu!');
-                return;
-            }
+    if (!selectedPlayer) {
+        alert('Pilih pemain terlebih dahulu!');
+        return;
+    }
 
-            let playerPointElements = getPlayerPoint();
-            let playerPointKey = Object.keys(getPlayerCard()).find(key => getPlayerCard()[key] === selectedPlayer);
-            let playerPointElement = playerPointElements[playerPointKey.replace('Card', 'Point')];
+    let playerPointElements = getPlayerPoint();
+    let playerPointKey = Object.keys(getPlayerCard()).find(key => getPlayerCard()[key] === selectedPlayer);
+    let playerPointElement = playerPointElements[playerPointKey.replace('Card', 'Point')];
 
-            let inputValue = parseInt(getPointControlForm().insertNumber.value) || 0;
-            let currentPoints = parseInt(playerPointElement.innerText) || 0;
+    let inputValue = parseInt(getPointControlForm().insertNumber.value) || 0;
+    let currentPoints = parseInt(playerPointElement.innerText) || 0;
 
-            if (isNaN(inputValue) || inputValue <= 0 || inputValue % 5 !== 0 || inputValue > 1050) {
-                alert('Masukkan angka yang valid! (hanya kelipatan 5, max 1050)');
-                return;
-            }
+    if (isNaN(inputValue) || inputValue <= 0 || inputValue % 5 !== 0 || inputValue > 1050) {
+        alert('Masukkan angka yang valid! (hanya kelipatan 5, max 1050)');
+        return;
+    }
 
-            let newPoints = isAdding ? currentPoints + inputValue : currentPoints - inputValue;
+    let newPoints = isAdding ? currentPoints + inputValue : currentPoints - inputValue;
 
-            // **Batas maksimal 1050**
-            if (newPoints > 1050) {
-                alert('Maksimal poin adalah 1050!');
-                return;
-            }
+    // **Batas maksimal 1050**
+    if (newPoints > 1050) {
+        alert('Maksimal poin adalah 1050!');
+        return;
+    }
 
-            if (newPoints < 0) {
-                newPoints = 0; // Pastikan poin tidak negatif
-            }
+    // **Izinkan poin negatif tanpa batasan 0**
+    playerPointElement.innerText = newPoints;
 
-            playerPointElement.innerText = newPoints;
+    // 🔥 Simpan ke localStorage dengan key yang unik
+    let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
+    playerPoints[playerPointKey] = newPoints;
+    localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
 
-            // 🔥 Simpan ke localStorage dengan key yang unik
-            let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
-            playerPoints[playerPointKey] = newPoints;
-            localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
+    console.log('Poin tersimpan:', playerPoints); // 🔍 Debugging untuk melihat apakah poin tersimpan
 
-            console.log('Poin tersimpan:', playerPoints); // 🔍 Debugging untuk melihat apakah poin tersimpan
-
-            getPointControlForm().insertNumber.value = '';
-        };
-
+    getPointControlForm().insertNumber.value = '';
+};
 
         const lastPlayerPoints = () => {
             let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};

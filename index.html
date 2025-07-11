@@ -21,9 +21,6 @@
                                 point</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link">riwayat</button>
-                        </li>
-                        <li class="nav-item">
                             <button id="toggleMode" class="nav-link btn-dark">🌙 gelap</button>
                         </li>
                     </ul>
@@ -138,15 +135,6 @@
                 </div>
             </div>
         </section>
-        <section id="historyPage" class="d-none">
-            <div class="container mt-3 mb-3">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
-                        <h1>Riwayat Permainan</h1>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
     <footer>
         <nav>
@@ -166,45 +154,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        // fungsi untuk berpindah2 halaman
-        const openPage = (allPage, allLink, pageNameId, currentElement, activeTab) => {
-            document.querySelectorAll(allPage).forEach((page) => {
-                page.classList.remove('d-block');
-                page.classList.add('d-none');
-            });
-
-            document.querySelectorAll(allLink).forEach((link) => {
-                link.classList.remove('active');
-            });
-
-            document.getElementById(pageNameId).classList.remove('d-none');
-            document.getElementById(pageNameId).classList.add('d-block');
-
-            currentElement.classList.add('active');
-
-            localStorage.setItem(activeTab, pageNameId);
-        };
-
-        document.querySelector('nav').addEventListener('click', (e) => {
-            if (e.target.classList.contains('nav-link')) {
-                if (e.target.innerText.trim() === 'cekih point') {
-                    openPage('main > section', 'nav .nav-link', 'cekihPointPage', e.target, 'activeTab');
-                } else if (e.target.innerText.trim() === 'riwayat') {
-                    openPage('main > section', 'nav .nav-link', 'historyPage', e.target, 'activeTab');
-                }
-            }
-        });
-
-        // fungsi untuk mengembalikan halaman terakhir yang aktif
-        const lastActivePage = () => {
-            return document.querySelectorAll('nav .nav-link').forEach((navLink) => {
-                if ((navLink.innerText.trim() === 'cekih point' && localStorage.getItem('activeTab') === 'cekihPointPage') ||
-                    (navLink.innerText.trim() === 'riwayat' && localStorage.getItem('activeTab') === 'historyPage')) {
-                    navLink.click();
-                }
-            });
-        }
-
         // fungsi untuk mengubah tema bg warna
         document.getElementById("toggleMode").addEventListener("click", (e) => {
             if (document.body.getAttribute("data-bs-theme") === "light") {
@@ -299,45 +248,45 @@
         });
 
         const updatePlayerPoint = (isAdding) => {
-    let selectedPlayer = Object.values(getPlayerCard()).find(card => card.classList.contains('bg-primary'));
+            let selectedPlayer = Object.values(getPlayerCard()).find(card => card.classList.contains('bg-primary'));
 
-    if (!selectedPlayer) {
-        alert('Pilih pemain terlebih dahulu!');
-        return;
-    }
+            if (!selectedPlayer) {
+                alert('Pilih pemain terlebih dahulu!');
+                return;
+            }
 
-    let playerPointElements = getPlayerPoint();
-    let playerPointKey = Object.keys(getPlayerCard()).find(key => getPlayerCard()[key] === selectedPlayer);
-    let playerPointElement = playerPointElements[playerPointKey.replace('Card', 'Point')];
+            let playerPointElements = getPlayerPoint();
+            let playerPointKey = Object.keys(getPlayerCard()).find(key => getPlayerCard()[key] === selectedPlayer);
+            let playerPointElement = playerPointElements[playerPointKey.replace('Card', 'Point')];
 
-    let inputValue = parseInt(getPointControlForm().insertNumber.value) || 0;
-    let currentPoints = parseInt(playerPointElement.innerText) || 0;
+            let inputValue = parseInt(getPointControlForm().insertNumber.value) || 0;
+            let currentPoints = parseInt(playerPointElement.innerText) || 0;
 
-    if (isNaN(inputValue) || inputValue <= 0 || inputValue % 5 !== 0 || inputValue > 1050) {
-        alert('Masukkan angka yang valid! (hanya kelipatan 5, max 1050)');
-        return;
-    }
+            if (isNaN(inputValue) || inputValue <= 0 || inputValue % 5 !== 0 || inputValue > 1050) {
+                alert('Masukkan angka yang valid! (hanya kelipatan 5, max 1050)');
+                return;
+            }
 
-    let newPoints = isAdding ? currentPoints + inputValue : currentPoints - inputValue;
+            let newPoints = isAdding ? currentPoints + inputValue : currentPoints - inputValue;
 
-    // **Batas maksimal 1050**
-    if (newPoints > 1050) {
-        alert('Maksimal poin adalah 1050!');
-        return;
-    }
+            // **Batas maksimal 1050**
+            if (newPoints > 1050) {
+                alert('Maksimal poin adalah 1050!');
+                return;
+            }
 
-    // **Izinkan poin negatif tanpa batasan 0**
-    playerPointElement.innerText = newPoints;
+            // **Izinkan poin negatif tanpa batasan 0**
+            playerPointElement.innerText = newPoints;
 
-    // 🔥 Simpan ke localStorage dengan key yang unik
-    let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
-    playerPoints[playerPointKey] = newPoints;
-    localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
+            // 🔥 Simpan ke localStorage dengan key yang unik
+            let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
+            playerPoints[playerPointKey] = newPoints;
+            localStorage.setItem('playerPoints', JSON.stringify(playerPoints));
 
-    console.log('Poin tersimpan:', playerPoints); // 🔍 Debugging untuk melihat apakah poin tersimpan
+            console.log('Poin tersimpan:', playerPoints); // 🔍 Debugging untuk melihat apakah poin tersimpan
 
-    getPointControlForm().insertNumber.value = '';
-};
+            getPointControlForm().insertNumber.value = '';
+        };
 
         const lastPlayerPoints = () => {
             let playerPoints = JSON.parse(localStorage.getItem('playerPoints')) || {};
@@ -483,7 +432,6 @@
                 formInputPlayerNameModal = new bootstrap.Modal(modalElement);
             }
 
-            lastActivePage();
             lastActiveDataBsTheme();
             lastPlayerPoints();
             lastPlayerNames();
